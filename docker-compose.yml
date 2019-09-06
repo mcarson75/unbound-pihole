@@ -11,7 +11,7 @@ services:
         ipv4_address: $LOCAL_IP
     restart: unless-stopped
     volumes:
-      - /etc/dnspihole:/etc/pihole
+      - /etc/dns/pihole:/etc/pihole
       - /etc/dns/dnsmasq.d:/etc/dnsmasq.d
       - /etc/dns/unbound:/opt/unbound/etc/unbound
     cap_add:
