@@ -8,3 +8,6 @@ set -e
 #fi
 
 bash -e -x /unbound_init.sh
+
+mkdir -p /tmp/state
+touch /tmp/state/10-unbound-init  
