@@ -1,0 +1,29 @@
+version: '3.6'
+
+services:
+  dns:
+    container_name: dns
+    domainname: docker
+    hostname: dns
+    image: mcarson75/unbound-pihole:amd64
+    networks:
+      lan:
+        ipv4_address: $LOCAL_IP
+    restart: unless-stopped
+    volumes:
+      - /etc/dnspihole:/etc/pihole
+      - /etc/dns/dnsmasq.d:/etc/dnsmasq.d
+      - /etc/dns/unbound:/opt/unbound/etc/unbound
+    cap_add:
+      - NET_ADMIN
+    environment:
+      ServerIP: $LOCAL_IP
+      TZ: 'America/New_York'
+      WEBPASSWORD: ''
+      DNS1: 127.0.0.1#5053
+      DNS2: "no"
+      IPV6: "no"
+
+networks:
+  lan:
+    external: true
