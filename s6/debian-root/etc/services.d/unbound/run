@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bash
+
+s6-echo "unbound-anchor running...."
+/opt/unbound/sbin/unbound-anchor -a /opt/unbound/etc/unbound/var/root.key
+s6-echo "unbound-anchor finished"
+
+s6-echo "Starting unbound"
+#exec /opt/unbound/sbin/unbound -d -c /opt/unbound/etc/unbound/unbound.conf
+exec /opt/unbound/sbin/unbound -c /opt/unbound/etc/unbound/unbound.conf
