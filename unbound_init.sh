@@ -38,6 +38,11 @@ chown _unbound:_unbound /opt/unbound/etc/unbound/var
 
 s6-echo "Var created"
 
-s6-echo "Copying files"
-cp -r /opt/unbound/defaults/* /opt/unbound/etc/unbound
-s6-echo "Copy files finished"
+s6-echo "Checking default files"
+if [! -f /opt/unbound/etc/unbound/unbound.conf]
+then
+  s6-echo "Copying default config files"
+  cp -r /opt/unbound/defaults/* /opt/unbound/etc/unbound
+else
+  s6-echo "Files not copied - files exist"
+fi
