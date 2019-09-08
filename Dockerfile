@@ -177,7 +177,7 @@ LABEL maintainer="adam@diginc.us"
 LABEL url="https://www.github.com/pi-hole/docker-pi-hole"
 
 #HEALTHCHECK CMD dig @127.0.0.1 pi.hole || exit 1
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD drill @127.0.0.1 cloudflare.com || exit 1
+HEALTHCHECK --interval=20s --timeout=6s --start-period=20s CMD drill @127.0.0.1 cloudflare.com || exit 1
 
 #CMD ["/unbound.sh"]
 SHELL ["/bin/bash", "-c"]
