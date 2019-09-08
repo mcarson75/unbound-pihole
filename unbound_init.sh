@@ -39,7 +39,7 @@ chown _unbound:_unbound /opt/unbound/etc/unbound/var
 s6-echo "Var created"
 
 s6-echo "Checking default files"
-if [! -f /opt/unbound/etc/unbound/unbound.conf]
+if [ ! -f /opt/unbound/etc/unbound/unbound.conf ]
 then
   s6-echo "Copying default config files"
   cp -r /opt/unbound/defaults/* /opt/unbound/etc/unbound
