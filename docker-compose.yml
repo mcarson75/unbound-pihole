@@ -5,7 +5,10 @@ services:
     container_name: dns
     domainname: docker
     hostname: dns
-    image: mcarson75/unbound-pihole:amd64
+    image: mcarson75/unbound-pihole:latest
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
     networks:
       lan:
         ipv4_address: $LOCAL_IP
